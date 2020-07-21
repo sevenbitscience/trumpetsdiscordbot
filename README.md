@@ -1,1 +1,1 @@
-# trumpetsdiscordbot
+# Trumpets Discord Bot
