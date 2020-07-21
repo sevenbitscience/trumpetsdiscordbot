@@ -83,5 +83,4 @@ async def helltaker(ctx, brief='random demon girl'):
 	await ctx.channel.send(file=discord.File("D:/DiscordBots/TestBot/helltaker/" + (str(random.randint(0,8))+'.png')))
 	print('command sent:helltaker:'+ str(datetime.now()))
 
-#bot.run('NzMxNjA3MzY4MzY1NzY4NzI2.XwpTvg.G4Cmvgr3tdRxqoCLt_bLqGh2DUY')
-bot.run('NzMxNTc3MjY5NTY2MzA4NDEz.XwzMcQ.dh_u2VMg_wsxATuqa0vqj2jYaFs')
+bot.run('███████████████████████████████████████████████████████████')
