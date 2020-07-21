@@ -1,12 +1,12 @@
 # Trumpets Discord Bot
-A discord bot with random features
+A discord bot with random features written by cool_trumpet *AKA SevenBitScience*.
 
 ## Dependecies
 https://pypi.org/project/discord.py/
 https://pypi.org/project/wikipedia/
 
 ## How to use
-Use the command prefix **$** before all commands
+Use the command prefix **$** before all commands.
 
 ### Commands
 - roll : Plays the rick roll in the voice chat user is in
