@@ -1,6 +1,7 @@
 # Trumpets Discord Bot
+A discord bot with random features
 
-##Dependecies
+## Dependecies
 https://pypi.org/project/discord.py/
 https://pypi.org/project/wikipedia/
 
