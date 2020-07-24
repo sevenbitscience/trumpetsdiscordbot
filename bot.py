@@ -20,7 +20,7 @@ dice_list = ['side','side','side','heads','heads','tails']
 @bot.event
 async def on_ready():
 	print('We have logged in as {0.user}'.format(bot))
-	game = discord.Game('wif daddy uwu')
+	game = discord.Game('with my bot friends!')
 	await bot.change_presence(status=discord.Status.online, activity=game)
 @bot.command()
 async def roll(ctx, brief='Voice chat rickroll'):
