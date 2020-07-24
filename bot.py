@@ -8,6 +8,7 @@ import wikipedia
 from datetime import datetime
 
 #Testing if git works
+# Dad testing if git works
 
 partBwords = ["EASY", "SIMPLE", "GENIUS", "BRILIANT", "DELICIOUS", "STUNNING", "EPIC", "CRAZY", "COOL", "WONDERFUL", "USEFUL", "SIMPLE AND FUN", "SIMPLE YED BRILLIANT", "AMAZING", "UNEXPECTED", "CLEANING", "CREATIVE", "CREATIVE YET SIMPLE", "SMART", "HANDY", "FANTASTIC"]
 partCwords = ["HACKS", "COOKING IDEAS", "DIYS", "ART IDEAS", "SECRETS", "INSTAGRAM TRICKS", "SCHOOL PRANKS", "CRAFTS", "RECIPES", "SOAP IDEAS", "IDEAS", "LIFE HACKS", "INVENTIONS", "GADGET IDEAS", "IDEAS", "TRICKS", "DIY DECOR IDEAS", "RECIPES", "CLOTHES HACKS", "SCIENCE TRICKS", "NAIL ART"]
@@ -64,7 +65,7 @@ async def meme(ctx, brief='Randomly selects a meme from our expansive library of
 	print('command sent:meme:'+ str(datetime.now()))
 @bot.command()
 async def stockphoto(ctx, brief='random stock photo'):
-	await ctx.channel.send(file=discord.File("D:/DiscordBots/TestBot/stockphotos/" + (str(random.randint(0,15))+'.png')))
+	await ctx.channel.send(file=discord.File("stockphotos/" + (str(random.randint(0,15))+'.png')))
 	print('command sent:stockphoto:'+ str(datetime.now()))
 @bot.command()
 async def joke(ctx, brief='Tells a joke'):
@@ -82,7 +83,7 @@ async def status(ctx, *, arg, hidden=True):
 
 @bot.command()
 async def helltaker(ctx, brief='random demon girl'):
-	await ctx.channel.send(file=discord.File("D:/DiscordBots/TestBot/helltaker/" + (str(random.randint(0,8))+'.png')))
+	await ctx.channel.send(file=discord.File("helltaker/" + (str(random.randint(0,8))+'.png')))
 	print('command sent:helltaker:'+ str(datetime.now()))
 
 bot.run('███████████████████████████████████████████████████████████')
