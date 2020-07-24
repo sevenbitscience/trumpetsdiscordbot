@@ -83,4 +83,9 @@ async def helltaker(ctx, brief='random demon girl'):
 	await ctx.channel.send(file=discord.File("helltaker/" + (str(random.randint(0,8))+'.png')))
 	print('command sent:helltaker:'+ str(datetime.now()))
 
-bot.run('███████████████████████████████████████████████████████████')
+# Get key from file
+keyFile = open('../Key.txt', 'r')
+key = keyFile.read()
+keyFile.close()
+
+bot.run(key)
