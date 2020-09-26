@@ -1,7 +1,7 @@
 # Trumpets Discord Bot
 A discord bot with random features written by cool_trumpet *AKA SevenBitScience*.
 
-## Dependecies
+## Required modules
 https://pypi.org/project/discord.py/
 https://pypi.org/project/wikipedia/
 
