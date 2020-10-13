@@ -33,6 +33,10 @@ async def ping(ctx, hidden=True):
 	await ctx.send('pong')
 	print('command sent:ping:' + str(datetime.now()))
 @bot.command()
+async def null(ctx, hidden=True):
+	await ctx.send('sevenbitscience.github.io/Video.mp4')
+	print('command sent:ping:' + str(datetime.now()))
+@bot.command()
 async def shrek(ctx, brief='Need i say more'):
 	await ctx.channel.send('somebody once told me the world is gonna roll me \n i aint the sharpest tool in the shed\n She was looking kind of dumb with her finger and her thumb \n In the shape of an L on her forehead', tts=True)
 	print('command sent:shrek:'+ str(datetime.now()))
