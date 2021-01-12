@@ -107,7 +107,7 @@ async def helltaker(ctx, brief='random demon girl'):
 
 @bot.command()
 async def mc(ctx, *, msg):
-    if len(msg.split) = 1:
+    if len(msg.split) == 1:
         server = MinecraftServer.lookup("sevenbitsci.mooo.com")
     else:
         server = MinecraftServer.lookup(msg.split[1])
