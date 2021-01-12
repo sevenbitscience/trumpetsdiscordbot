@@ -8,7 +8,7 @@ import wikipedia
 from mcstatus import MinecraftServer
 from datetime import datetime
 
-server = MinecraftServer.lookup("sevenbitsci.mooo.com")
+defaultserver = "sevenbitsci.mooo.com"
 
 partBwords = ["EASY", "SIMPLE", "GENIUS", "BRILIANT", "DELICIOUS", "STUNNING", "EPIC", "CRAZY", "COOL", "WONDERFUL", "USEFUL", "SIMPLE AND FUN", "SIMPLE YED BRILLIANT", "AMAZING", "UNEXPECTED", "CLEANING", "CREATIVE", "CREATIVE YET SIMPLE", "SMART", "HANDY", "FANTASTIC"]
 partCwords = ["HACKS", "COOKING IDEAS", "DIYS", "ART IDEAS", "SECRETS", "INSTAGRAM TRICKS", "SCHOOL PRANKS", "CRAFTS", "RECIPES", "SOAP IDEAS", "IDEAS", "LIFE HACKS", "INVENTIONS", "GADGET IDEAS", "IDEAS", "TRICKS", "DIY DECOR IDEAS", "RECIPES", "CLOTHES HACKS", "SCIENCE TRICKS", "NAIL ART"]
@@ -106,10 +106,15 @@ async def helltaker(ctx, brief='random demon girl'):
 	print('command sent:helltaker:' + str(datetime.now()))
 
 @bot.command()
-async def mc(ctx, *, arg="sevenbitsci.mooo.com"):
+async def mc(ctx, *, arg=defaultserver):
     server = MinecraftServer.lookup(arg)
     status = server.status()
     await ctx.channel.send("The server has {0} players and replied in {1} ms".format(status.players.online, status.latency))
+
+@bot.command()
+async def setmc(ctx, *, arg):
+    defaultserver = arg
+    await ctx.channel.send("Set default server to" + defaultserver)
 
 # Get key from file
 keyFile = open('../Key.txt', 'r')
