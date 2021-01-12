@@ -106,11 +106,11 @@ async def helltaker(ctx, brief='random demon girl'):
 	print('command sent:helltaker:' + str(datetime.now()))
 
 @bot.command()
-async def mc(ctx, *, arg):
-    if arg is none:
+async def mc(ctx, *, msg):
+    if len(msg.split) = 1:
         server = MinecraftServer.lookup("sevenbitsci.mooo.com")
     else:
-        server = MinecraftServer.lookup(arg)
+        server = MinecraftServer.lookup(msg.split[1])
     status = server.status()
     await ctx.channel.send("The server has {0} players and replied in {1} ms".format(status.players.online, status.latency))
 
