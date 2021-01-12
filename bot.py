@@ -20,7 +20,7 @@ bot = commands.Bot(command_prefix='$')
 
 dice_list = ['side','side','side','heads','heads','tails']
 
-print ('Bot started at' + str(datetime.now()))
+print ('Bot started at ' + str(datetime.now()))
 
 @bot.event
 async def on_ready():
@@ -107,10 +107,10 @@ async def helltaker(ctx, brief='random demon girl'):
 
 @bot.command()
 async def mc(ctx, *, arg):
-    if arg:
-        server = MinecraftServer.lookup(arg)
-    else:
+    if arg is none:
         server = MinecraftServer.lookup("sevenbitsci.mooo.com")
+    else:
+        server = MinecraftServer.lookup(arg)
     status = server.status()
     await ctx.channel.send("The server has {0} players and replied in {1} ms".format(status.players.online, status.latency))
 
