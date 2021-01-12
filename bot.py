@@ -20,7 +20,7 @@ bot = commands.Bot(command_prefix='$')
 
 dice_list = ['side','side','side','heads','heads','tails']
 
-print ('Bot started at' + datetime.now())
+print ('Bot started at' + str(datetime.now()))
 
 @bot.event
 async def on_ready():
