@@ -5,7 +5,10 @@ from discord.voice_client import VoiceClient
 import asyncio
 import random
 import wikipedia
+from mcstatus import MinecraftServer
 from datetime import datetime
+
+server = MinecraftServer.lookup("sevenbitsci.mooo.com")
 
 partBwords = ["EASY", "SIMPLE", "GENIUS", "BRILIANT", "DELICIOUS", "STUNNING", "EPIC", "CRAZY", "COOL", "WONDERFUL", "USEFUL", "SIMPLE AND FUN", "SIMPLE YED BRILLIANT", "AMAZING", "UNEXPECTED", "CLEANING", "CREATIVE", "CREATIVE YET SIMPLE", "SMART", "HANDY", "FANTASTIC"]
 partCwords = ["HACKS", "COOKING IDEAS", "DIYS", "ART IDEAS", "SECRETS", "INSTAGRAM TRICKS", "SCHOOL PRANKS", "CRAFTS", "RECIPES", "SOAP IDEAS", "IDEAS", "LIFE HACKS", "INVENTIONS", "GADGET IDEAS", "IDEAS", "TRICKS", "DIY DECOR IDEAS", "RECIPES", "CLOTHES HACKS", "SCIENCE TRICKS", "NAIL ART"]
@@ -17,41 +20,51 @@ bot = commands.Bot(command_prefix='$')
 
 dice_list = ['side','side','side','heads','heads','tails']
 
+print ('Bot started at' + datetime.now())
+
 @bot.event
 async def on_ready():
 	print('We have logged in as {0.user}'.format(bot))
 	game = discord.Game('with my bot friends!')
 	await bot.change_presence(status=discord.Status.online, activity=game)
+
 @bot.command()
 async def roll(ctx, brief='Voice chat rickroll'):
 	channel = ctx.author.voice.channel
 	vc = await channel.connect()
 	vc.play(discord.FFmpegPCMAudio('rickroll.mp3'), after=lambda e: ctx.voice_client.disconnect())
-	print('command sent:roll:'+ datetime.now())
+	print('command sent:roll:' + datetime.now())
+
 @bot.command()
 async def ping(ctx, hidden=True):
 	await ctx.send('pong')
 	print('command sent:ping:' + str(datetime.now()))
+
 @bot.command()
 async def null(ctx, hidden=True):
 	await ctx.send('sevenbitscience.github.io/Video.mp4')
 	print('command sent: :' + str(datetime.now()))
+
 @bot.command()
 async def shrek(ctx, brief='Need i say more'):
 	await ctx.channel.send('somebody once told me the world is gonna roll me \n i aint the sharpest tool in the shed\n She was looking kind of dumb with her finger and her thumb \n In the shape of an L on her forehead', tts=True)
-	print('command sent:shrek:'+ str(datetime.now()))
+	print('command sent:shrek:' + str(datetime.now()))
+
 @bot.command()
 async def rickroll(ctx, brief='Text chat rickroll'):
 	await ctx.channel.send('We\'re no strangers to love\n You know the rules and so do I\n A full commitment\'s what I\'m thinking of\n You wouldn\'t get this from any other guy', tts=True)
-	print('command sent:rickroll:'+ str(datetime.now()))
+	print('command sent:rickroll:' + str(datetime.now()))
+
 @bot.command()
 async def coinflip(ctx, brief='Flips a coin'):
 	await ctx.channel.send(random.choice(dice_list))
-	print('command sent:coinflip:'+ str(datetime.now()))
+	print('command sent:coinflip:' + str(datetime.now()))
+
 @bot.command()
 async def dice(ctx, brief='Rolls a dice'):
 	await ctx.channel.send('the dice landed on ||ur mum||')
-	print('command sent:dice:'+ str(datetime.now()))
+	print('command sent:dice:' + str(datetime.now()))
+
 @bot.command()
 async def craft(ctx, brief='Gives a randomly generated 5 minute craft title'):
 	partA = random.randrange(20, 41)
@@ -60,22 +73,27 @@ async def craft(ctx, brief='Gives a randomly generated 5 minute craft title'):
 	partD = random.randrange(len(partDwords))
 	await ctx.channel.send(str(partA) + ' ' + partBwords[partB] + ' ' + partCwords[partC] + ' ' + partDwords[partD])
 	print('command sent:craft:' + str(datetime.now()))
+
 @bot.command()
 async def meme(ctx, brief='Randomly selects a meme from our expansive library of memes'):
 	await ctx.channel.send(file=discord.File('meme.jpg'))
-	print('command sent:meme:'+ str(datetime.now()))
+	print('command sent:meme:' + str(datetime.now()))
+
 @bot.command()
 async def stockphoto(ctx, brief='random stock photo'):
 	await ctx.channel.send(file=discord.File("stockphotos/" + (str(random.randint(0,15))+'.png')))
-	print('command sent:stockphoto:'+ str(datetime.now()))
+	print('command sent:stockphoto:' + str(datetime.now()))
+
 @bot.command()
 async def joke(ctx, brief='Tells a joke'):
 	await ctx.channel.send(jokes[random.randrange(len(jokes))])
-	print('command sent:joke:'+ str(datetime.now()))
+	print('command sent:joke:' + str(datetime.now()))
+
 @bot.command()
-async def wiki(ctx, *, arg, brief='Gives a summary from wikipedia. format:$wiki search goes here'):
+async def wiki(ctx, *, arg, brief='Gives a summary from wikipedia. format:$wiki (search goes here)'):
 	await ctx.channel.send(wikipedia.summary(arg, sentences=1))
 	print('command sent:wiki ' + arg + ':' + str(datetime.now()))
+
 @bot.command()
 async def status(ctx, *, arg, hidden=True):
 	game = discord.Game(arg)
@@ -85,7 +103,16 @@ async def status(ctx, *, arg, hidden=True):
 @bot.command()
 async def helltaker(ctx, brief='random demon girl'):
 	await ctx.channel.send(file=discord.File("helltaker/" + (str(random.randint(0,8))+'.png')))
-	print('command sent:helltaker:'+ str(datetime.now()))
+	print('command sent:helltaker:' + str(datetime.now()))
+
+@bot.command()
+async def mc(ctx, *, arg):
+    if arg
+        server = MinecraftServer.lookup(arg)
+    else
+        server = MinecraftServer.lookup("sevenbitsci.mooo.com")
+    status = server.status()
+    await ctx.channel.send("The server has {0} players and replied in {1} ms".format(status.players.online, status.latency))
 
 # Get key from file
 keyFile = open('../Key.txt', 'r')
