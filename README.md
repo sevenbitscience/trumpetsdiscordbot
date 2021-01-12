@@ -21,3 +21,4 @@ Use the command prefix **$** before all commands.
 - wiki **search term** : gives a summary of the search term from wikipedia
 - status **status** : changes the bots 'playing' status to the given status
 - helltaker : sends an image of one of the helltaker demon girls
+- mc **ip** : checks how many players are on a minecraft server if no ip is provided it defaults to my server
