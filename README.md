@@ -4,6 +4,7 @@ A discord bot with random features written by cool_trumpet *AKA SevenBitScience*
 ## Required modules
 https://pypi.org/project/discord.py/
 https://pypi.org/project/wikipedia/
+https://github.com/Dinnerbone/mcstatus
 
 ## How to use
 Use the command prefix **$** before all commands.
