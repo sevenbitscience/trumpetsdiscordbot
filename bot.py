@@ -107,14 +107,18 @@ async def helltaker(ctx, brief='random demon girl'):
 
 @bot.command()
 async def mc(ctx, *, arg=defaultserver):
-    server = MinecraftServer.lookup(arg)
-    status = server.status()
-    await ctx.channel.send("The server has {0} players and replied in {1} ms".format(status.players.online, status.latency))
+    if arg == defaultserver:
+        query = server.query()
+        await ctx.channel.send("The server has the following players online: {0}".format(", ".join(query.players.names)))
+    else: 
+        server = MinecraftServer.lookup(arg)
+        status = server.status()
+        await ctx.channel.send("The server has {0} players and replied in {1} ms".format(status.players.online, status.latency))
 
 @bot.command()
 async def setmc(ctx, *, arg):
     defaultserver = arg
-    await ctx.channel.send("Set default server to" + defaultserver)
+    await ctx.channel.send("Set default server to " + defaultserver)
 
 # Get key from file
 keyFile = open('../Key.txt', 'r')
