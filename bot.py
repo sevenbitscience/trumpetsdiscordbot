@@ -91,6 +91,8 @@ async def joke(ctx, brief='Tells a joke'):
 
 @bot.command()
 async def wiki(ctx, *, arg, brief='Gives a summary from wikipedia. format:$wiki (search goes here)'):
+    if arg == "cock and ball torture":
+        await ctx.channel.send("Error 420: ur dumb boi")
 	await ctx.channel.send(wikipedia.summary(arg, sentences=1))
 	print('command sent:wiki ' + arg + ':' + str(datetime.now()))
 
@@ -108,12 +110,8 @@ async def helltaker(ctx, brief='random demon girl'):
 @bot.command()
 async def mc(ctx, *, arg=defaultserver):
     server = MinecraftServer.lookup(arg)
-    if arg == defaultserver:
-        query = server.query()
-        await ctx.channel.send("The server has the following players online: {0}".format(", ".join(query.players.names)))
-    else: 
-        status = server.status()
-        await ctx.channel.send("The server has {0} players and replied in {1} ms".format(status.players.online, status.latency))
+    status = server.status()
+    await ctx.channel.send("The server has {0} players and replied in {1} ms".format(status.players.online, status.latency))
 
 @bot.command()
 async def setmc(ctx, *, arg):
