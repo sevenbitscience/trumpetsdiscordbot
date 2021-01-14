@@ -90,9 +90,10 @@ async def joke(ctx, brief='Tells a joke'):
 	print('command sent:joke:' + str(datetime.now()))
 
 @bot.command()
-async def wiki(ctx, *, arg, brief='Gives a summary from wikipedia. format:$wiki (search goes here)'):
+async def wiki(ctx, brief='Gives a summary from wikipedia. format:$wiki (search goes here)', *, arg):
     if arg == "cock and ball torture":
-        await ctx.channel.send("Error 420: ur dumb boi")
+        await ctx.delete_message(ctx.message)
+        await ctx.channel.send("Error 420: don't want that in the chat")
     else:
         await ctx.channel.send(wikipedia.summary(arg, sentences=1))
         print('command sent:wiki ' + arg + ':' + str(datetime.now()))
