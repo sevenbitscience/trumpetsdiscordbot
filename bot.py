@@ -52,7 +52,7 @@ async def shrek(ctx, brief='Need i say more'):
 
 @bot.command()
 async def rickroll(ctx, brief='Text chat rickroll'):
-	await ctx.channel.send('We\'re no strangers to love\n You know the rules and so do I\n A full commitment\'s what I\'m thinking of\n You wouldn\'t get this from any other guy', tts=True)
+	await ctx.channel.send('Never gonna give you up\nNever gonna let you down\nNever gonna run around and desert you\nNever gonna make you cry\nNever gonna say goodbye\nNever gonna tell a lie and hurt you', tts=True)
 	print('command sent:rickroll:' + str(datetime.now()))
 
 @bot.command()
