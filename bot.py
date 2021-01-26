@@ -93,7 +93,7 @@ async def joke(ctx, brief='Tells a joke'):
 @bot.command()
 async def wiki(ctx, brief='Gives a summary from wikipedia. format:$wiki (search goes here)', *, arg):
     await ctx.channel.send(wikipedia.summary(arg, sentences=1))
-    ctx.channel.send(wikipedia.summary(str(arg), sentences=1))
+    await ctx.channel.send(wikipedia.summary(str(arg), sentences=1))
     await ctx.channel.send(arg)
     print('command sent:wiki ' + arg + ':' + str(datetime.now()))
 
