@@ -82,7 +82,7 @@ async def meme(ctx, brief='Randomly selects a meme from our expansive library of
 
 @bot.command()
 async def stockphoto(ctx, brief='random stock photo'):
-	await ctx.channel.send(file=discord.File("stockphotos/" + (str(random.randint(0,len(glob.glob('*.png'))))+'.png')))
+	await ctx.channel.send(file=discord.File("stockphotos/" + (str(random.randrange(0,len(glob.glob('*.png'))))+'.png')))
 	print('command sent:stockphoto:' + str(datetime.now()))
 
 @bot.command()
@@ -93,17 +93,19 @@ async def joke(ctx, brief='Tells a joke'):
 @bot.command()
 async def wiki(ctx, brief='Gives a summary from wikipedia. format:$wiki (search goes here)', *, arg):
     await ctx.channel.send(wikipedia.summary(arg, sentences=1))
+    ctx.channel.send(wikipedia.summary(str(arg), sentences=1))
+    await ctx.channel.send(arg)
     print('command sent:wiki ' + arg + ':' + str(datetime.now()))
 
 @bot.command()
-async def status(ctx, *, arg, hidden=True):
+async def status(ctx, hidden=True, *, arg):
 	game = discord.Game(arg)
 	await bot.change_presence(status=discord.Status.online, activity=game)
 	print('command sent:status ' + arg + ':' + str(datetime.now()))
 
 @bot.command()
 async def helltaker(ctx, brief='random demon girl'):
-	await ctx.channel.send(file=discord.File("helltaker/" + (str(random.randint(0,len(glob.glob('*.png'))))+'.png')))
+	await ctx.channel.send(file=discord.File("helltaker/" + (str(random.randrange(0,len(glob.glob('*.png'))))+'.png')))
 	print('command sent:helltaker:' + str(datetime.now()))
 
 @bot.command()
