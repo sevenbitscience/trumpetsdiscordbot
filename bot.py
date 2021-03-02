@@ -7,7 +7,6 @@ import random
 import wikipedia
 from mcstatus import MinecraftServer
 from datetime import datetime
-import glob
 
 defaultserver = "sevenbitsci.mooo.com"
 
@@ -25,7 +24,7 @@ print ('Bot started at ' + str(datetime.now()))
 
 @bot.event
 async def on_ready():
-	print('We have logged in as {0.user}'.format(bot) + ' at ' + str(datetime.now()))
+	print('We have logged in as {0.user}'.format(bot))
 	game = discord.Game('with my bot friends!')
 	await bot.change_presence(status=discord.Status.online, activity=game)
 
@@ -82,7 +81,7 @@ async def meme(ctx, brief='Randomly selects a meme from our expansive library of
 
 @bot.command()
 async def stockphoto(ctx, brief='random stock photo'):
-	await ctx.channel.send(file=discord.File("stockphotos/" + (str(random.randrange(0,len(glob.glob('*.png'))))+'.png')))
+	await ctx.channel.send(file=discord.File("stockphotos/" + (str(random.randint(0,15))+'.png')))
 	print('command sent:stockphoto:' + str(datetime.now()))
 
 @bot.command()
@@ -92,20 +91,22 @@ async def joke(ctx, brief='Tells a joke'):
 
 @bot.command()
 async def wiki(ctx, brief='Gives a summary from wikipedia. format:$wiki (search goes here)', *, arg):
-    await ctx.channel.send(wikipedia.summary(arg, sentences=1))
-    await ctx.channel.send(wikipedia.summary(str(arg), sentences=1))
-    await ctx.channel.send(arg)
-    print('command sent:wiki ' + arg + ':' + str(datetime.now()))
+    if arg == "cock and ball torture":
+        await ctx.delete_message(ctx.message)
+        await ctx.channel.send("Error 420: don't want that in the chat")
+    else:
+        await ctx.channel.send(wikipedia.summary(arg, sentences=1))
+        print('command sent:wiki ' + arg + ':' + str(datetime.now()))
 
 @bot.command()
-async def status(ctx, hidden=True, *, arg):
+async def status(ctx, *, arg, hidden=True):
 	game = discord.Game(arg)
 	await bot.change_presence(status=discord.Status.online, activity=game)
 	print('command sent:status ' + arg + ':' + str(datetime.now()))
 
 @bot.command()
 async def helltaker(ctx, brief='random demon girl'):
-	await ctx.channel.send(file=discord.File("helltaker/" + (str(random.randrange(0,len(glob.glob('*.png'))))+'.png')))
+	await ctx.channel.send(file=discord.File("helltaker/" + (str(random.randint(0,8))+'.png')))
 	print('command sent:helltaker:' + str(datetime.now()))
 
 @bot.command()
@@ -115,12 +116,9 @@ async def mc(ctx, *, arg=defaultserver):
     await ctx.channel.send("The server has {0} players and replied in {1} ms".format(status.players.online, status.latency))
 
 @bot.command()
-async def setmc(ctx, *, arg=defaultserver):
+async def setmc(ctx, *, arg):
+    defaultserver = arg
     await ctx.channel.send("Set default server to " + defaultserver)
-    
-@bot.command()
-async def addhell(ctx):
-    await ctx.channel.message.save('helltaker/' + len(glob.glob('*.png'))+1 + '.png')
 
 # Get key from file
 keyFile = open('../Key.txt', 'r')
